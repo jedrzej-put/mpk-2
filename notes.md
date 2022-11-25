@@ -4,4 +4,4 @@ pip freeze > requirements.txt
 
 pip install -r requirements.txt
 
-python src/main.py
+uvicorn src.main:app --reload
