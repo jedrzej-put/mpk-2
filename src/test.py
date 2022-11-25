@@ -1,13 +1,19 @@
+class A:
+    def func(self):
+        print( 'A.func')
 
-from sqlalchemy.orm import Session
-from sqlalchemy import inspect
+class B(A):
+    def func(self):
+        print( 'B.func')
 
-from mypackage.database import crud, models, schemas
-from mypackage.database.database import SessionLocal, engine
+class C(A):
+    def func(self):
+        print( 'C.func')
 
-from mypackage.classes.LoadData import LoadData
+class D(C, B):
+    def func(self):
+        C.func(self)
+        B.func(self)
 
-models.Base.metadata.drop_all(bind=engine)
-models.Base.metadata.create_all(bind=engine)
-load_all_files = LoadData()
-load_all_files()
+d=D()
+d.func()

@@ -1,7 +1,6 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String
-from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String
 from typing import Dict, List
-
+from sqlalchemy.ext.declarative import declarative_base
 from .database import Base
 
 class NormalModel():
@@ -12,22 +11,22 @@ class NormalModel():
     def keys_names(cls) -> List:
         return [str(c.name) for c in cls.__table__.columns]
 
-class City(Base, NormalModel):
+           
+Model = declarative_base(cls=NormalModel)
+
+class City(Model):
     __tablename__ = "cities"
 
     city_id = Column(Integer, primary_key=True, index=True)
     city_name = Column(String, index=True)
 
-    # def keys_names():
-    #     return ["city_id", "city_name"]
 
-class Route(Base, NormalModel):
+class Route(Model):
     __tablename__ = "routes"
 
     route_id = Column(String, primary_key=True, index=True)
     route_short_name = Column(String, index=True)
     route_desc = Column(String)
 
-    # def keys_names():
-    #     return ["route_id", "route_short_name", "route_desc"]
+
 

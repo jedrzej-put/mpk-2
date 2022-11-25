@@ -1,17 +1,15 @@
-from sqlalchemy.orm import Session, mapper
-from sqlalchemy import MetaData, Table, Column, Integer, String
-from ..database.models import  Route, City
-from ..database.database import SessionLocal, engine, Base
-import glob
-import os
+from sqlalchemy import MetaData
+from ..database.models import  Route, City, Model
+from ..database.database import SessionLocal, engine
 from .ReadFile import ReadFile
+
 
 class LoadData():
     def __init__(self):
         self.db_session = SessionLocal()
         self.metadata=MetaData(engine)
     
-    def load_data_from_file(self, file_name, model):
+    def load_data_from_file(self, file_name: str, model: Model) -> None:
         try:
             data = ReadFile(file_name)
             for line in data.get_data_row():
