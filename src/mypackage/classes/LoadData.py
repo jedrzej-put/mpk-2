@@ -6,9 +6,6 @@ import glob
 import os
 from .ReadFile import ReadFile
 
-
-
-
 class LoadData():
     def __init__(self):
         self.db_session = SessionLocal()
@@ -19,7 +16,6 @@ class LoadData():
             data = ReadFile(file_name)
             for line in data.get_data_row():
                 record = model(**{key: value for key, value in zip(model.keys_names(), line)})
-                print(record)
                 self.db_session.add(record)
             self.db_session.commit()
         except:

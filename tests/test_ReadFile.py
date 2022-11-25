@@ -1,4 +1,4 @@
-from src.classes.ReadFile import ReadFile
+from src.mypackage.classes.ReadFile import ReadFile
 import pytest, logging
 logging.basicConfig(level=logging.DEBUG)
 LOGGER = logging.getLogger()
@@ -11,3 +11,4 @@ def test_read_cities(file_name):
     read_file = ReadFile(file_name)
 
     assert ['1', 'Wroclaw'] == next(read_file.get_data_row())
+    
