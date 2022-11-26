@@ -7,8 +7,8 @@ from .mypackage.classes.LoadData import LoadData
 from .mypackage.database import crud, models, schemas
 from .dependencies import get_db
 
-models.Base.metadata.drop_all(bind=engine)
-models.Base.metadata.create_all(bind=engine)
+models.Model.metadata.drop_all(bind=engine)
+models.Model.metadata.create_all(bind=engine)
 load_all_files = LoadData()
 load_all_files()
 

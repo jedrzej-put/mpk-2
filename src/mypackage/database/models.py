@@ -1,7 +1,6 @@
 from sqlalchemy import Column, Integer, String
 from typing import Dict, List
 from sqlalchemy.ext.declarative import declarative_base
-from .database import Base
 
 class NormalModel():
     def toDict(self) -> Dict:
